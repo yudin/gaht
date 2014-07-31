@@ -1,0 +1,133 @@
+<apex:component >
+<apex:stylesheet value="{!URLFOR($Resource.bootstrapsf, 'bootstrap.min.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.bootstrapsf, 'bootstrap-namespaced.min.css')}"/>
+<style>
+    a.gaht{
+        text-decoration: none;
+        color: #44596C;
+    }
+    a.gaht:hover{
+        text-decoration: none;
+        color: #44596C;
+    }
+.forceEntityIcon, .icon {
+	width: 30px;
+	height: 30px;
+}
+.card .header-icon {
+	float: left;
+	margin-right: 14px;
+}
+.card .header-label {
+	vertical-align: baseline;
+}
+.card-header {
+	padding: 14px;
+}
+.card-body {
+	margin-left: 58px;
+}
+.forceRelatedListCard {
+	margin: 14px;
+}
+.forceRelatedListCard.card-header-mini .card-header {
+    border-bottom: 0;
+}.forceRelatedList ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.forceRelatedList .listContent {
+    min-height: 0;
+}
+.forceRelatedList .forceButtonBar .overflowItems {
+    width: 25%}
+.forceRelatedList.header {
+    background: #344a5f;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33495f',  endColorstr='#23394d',  GradientType=0);
+    color: #ffffff;
+    font-family: 'ProximaNovaSoft-Semibold';
+    font-size: 18px;
+    padding: 14px;
+}
+.forceRelatedList.relatedListButtons {
+    padding: 14px;
+    border-bottom: 1px solid #cfd4d9;
+}
+.forceRelatedList .loadingIndicator .background {
+    opacity: 0;
+}
+.forceRelatedList .emptyListMessage {
+    padding: 100px 28px 14px 28px;
+    text-align: center;
+    font-size: 15px;
+    color: #696e71;
+}
+.forceRelatedList .forceListRecord {
+    background-color: #ffffff;
+    margin: 14px;
+    border-radius: 5px;
+    border: 1px solid #cfd4d9;
+}
+.forceRelatedList {
+    padding-bottom: 14px;
+	padding-left: 0px;
+}
+
+.forceListRecord {
+    list-style: none;
+    padding: 14px;
+}
+.forceListRecord.light {
+    border-bottom: 1px solid #eceef0;
+}
+.forceListRecord.actionable:active {
+    background-color: #e8eaeb;
+}
+.forceListRecord.dark {
+    border-bottom: 1px solid #cfd4d9;
+}
+.forceListRecord .itemTitle {
+    color: #3c3d3e;
+    font-size: 16px;
+    font-family: 'ProximaNovaSoft-Medium';
+    padding-bottom: 3px;
+}
+.forceListRecord .itemTitle, .forceListRecord .itemTitle div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.forceListRecord .itemRows {
+    color: #3c3d3e;
+    font-size: 14px;
+    font-family: 'ProximaNovaSoft-Regular';
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.forceListRecord .tableRowGroup {
+    list-style: none;
+}
+.forceListRecordItem {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+.forceListRecordItem .label {
+    color: #696e71;
+    padding-right: 14px;
+    -webkit-box-flex: 2;
+    -moz-box-flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    max-width: 125px;
+}
+
+
+
+</style>
+</apex:component>

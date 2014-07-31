@@ -1,0 +1,27 @@
+<apex:component >
+	<apex:attribute name="gameTitle" type="String" required="true" description="Description of game, eg. 'Next Game' "/>
+	<apex:attribute name="gameId" type="String" required="true" description="Id of game. This id will be used to navigate to the game detail page"/>
+	<apex:attribute name="homeTeam" type="String" required="true" description="Name of Home Team"/>
+	<apex:attribute name="awayTeam" type="String" required="true" description="Name of Away Team"/>
+	<div class="container">
+	    <a href="javascript:sforce.one.navigateToSObject('{!gameId}')">
+		<article class="card-header-mini card forceRelatedListCard">
+			<h3 class="card-header">
+				<span class="header-icon">
+					<div class="small forceEntityIcon" style="background-color: #8C4400;">
+					<img class="icon uiImage" title="" alt="" src="https://na17.salesforce.com/img/icon/t4/custom/custom52_120.png"/>
+					</div>
+				</span>
+				<span class="header-label">
+					{!gameTitle}
+				</span>
+			</h3>
+			<span class="card-body">
+					<span>{!homeTeam}</span>
+					X
+					<span>{!awayTeam}</span>
+			</span>
+		</article>
+	    </a>
+	</div>
+</apex:component>

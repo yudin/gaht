@@ -1,0 +1,257 @@
+<apex:component controller="GroupStandingsController" >
+<style>
+.classification-wrapper {
+    border-top: #dadada 1px solid;
+    font-family: Arial, helvetica, sans-serif;
+    font-size: 10pt;
+    border-bottom: #FFFFFF 1px solid;
+    overflow: hidden;
+    position: relative;
+}
+
+.classification-wrapper tr {
+    width: 160px;
+}
+    
+.classification-wrapper table.static {
+    display: inline-block;
+    border-right: 1px solid #dadada;
+    z-index: 10;
+    width: 160px;
+}
+
+.classification-wrapper table.dynamic {
+  /*  display: block;
+    left: 0px;
+    top: 0;
+    border-left: 1px solid #dadada;
+    margin-left: -3px;  */
+}
+
+.classification-wrapper table td, .classification-wrapper table th {
+    border-bottom: 1px solid #dadada;
+    height: 39px;
+}
+
+.classification-wrapper table.dynamic td, .classification-wrapper table.dynamic th {
+    min-width: 35px;
+    width: 35px;
+}
+
+.classification-wrapper table td.approval, .classification-wrapper table th.wide {
+    width: 45px;
+    min-width: 45px;
+}
+
+.classification-wrapper table th,
+.classification-wrapper table td {
+    text-align: center;
+}
+
+.classification-wrapper div table.dynamic th {
+    background-color: #f9f9f9 !important;
+}
+
+.classification-wrapper table td.points {
+    color: #434343;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: 35px;
+}
+
+.classification-wrapper div table.dynamic td:nth-child(odd) {
+    background: #ededed; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 50%, #ededed 75%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffffff), color-stop(75%, #ededed)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 50%, #ededed 75%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 50%, #ededed 75%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 50%, #ededed 75%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 50%, #ededed 75%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#ededed', GradientType = 0); /* IE6-9 */
+}
+
+.classification-wrapper div table.dynamic td:nth-child(even), .classification-wrapper table td {
+    background: #f9f9f9; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 50%, #f9f9f9 75%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffffff), color-stop(75%, #f9f9f9)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffffff 50%, #f9f9f9 75%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffffff 50%, #f9f9f9 75%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffffff 50%, #f9f9f9 75%); /* IE10+ */
+    background: linear-gradient(to bottom, #ffffff 50%, #f9f9f9 75%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#f9f9f9', GradientType = 0); /* IE6-9 */
+}
+
+    
+.classification-container {
+    top: 0;
+    bottom: 0;
+    left: 160px;
+    right: 0;
+    max-width: 290px;
+    overflow: hidden;
+    position: absolute;
+    box-sizing: content-box;
+    /* background-color: #eaebed; */
+}
+
+.classification-shadow {
+    width: 25px;
+    top: 0;
+    bottom: 5px;
+    display: inline-block;
+    z-index: 10;
+    position: absolute;
+}
+
+.classification-shadow.left {
+    left: 160px;
+    width: 4px;
+    background: -moz-linear-gradient(left, rgba(218, 218, 218, 1) 0%, rgba(218, 218, 218, 0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(218, 218, 218, 1)), color-stop(100%, rgba(218, 218, 218, 0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(218, 218, 218, 1) 0%, rgba(218, 218, 218, 0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(218, 218, 218, 1) 0%, rgba(218, 218, 218, 0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(218, 218, 218, 1) 0%, rgba(218, 218, 218, 0) 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(218, 218, 218, 1) 0%, rgba(218, 218, 218, 0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#dadada', endColorstr = '#00dadada', GradientType = 1); /* IE6-9 */
+float: left;
+}
+
+.classification-shadow.right {
+    right: 0;
+float: right;
+    background: -moz-linear-gradient(left, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(242, 242, 242, 0)), color-stop(100%, rgba(242, 242, 242, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 1) 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(242, 242, 242, 0) 0%, rgba(242, 242, 242, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#00f2f2f2', endColorstr = '#f2f2f2', GradientType = 1); /* IE6-9 */
+
+}
+
+.classification-shadow.right.end {
+    width: 4px;
+
+    background: -moz-linear-gradient(left, rgba(218, 218, 218, 0) 0%, rgba(218, 218, 218, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(218, 218, 218, 0)), color-stop(100%, rgba(218, 218, 218, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(218, 218, 218, 0) 0%, rgba(218, 218, 218, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(218, 218, 218, 0) 0%, rgba(218, 218, 218, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(218, 218, 218, 0) 0%, rgba(218, 218, 218, 1) 100%); /* IE10+ */
+    background: linear-gradient(to right, rgba(218, 218, 218, 0) 0%, rgba(218, 218, 218, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#00dadada', endColorstr = '#dadada', GradientType = 1); /* IE6-9 */
+}
+
+.classification-wrapper {
+    border-top: #dadada 1px solid;
+    font-family: Arial, helvetica, sans-serif;
+    font-size: 10pt;
+    border-bottom: #FFFFFF 1px solid;
+    overflow: hidden;
+    position: relative;
+}
+
+.classification-wrapper tr {
+    width: 160px;
+}
+
+.shortname {
+    color: #434343;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left !important;
+    width: 90px !important;
+    max-width: 90px;
+    overflow: hidden;
+
+}
+
+.approval {
+    width: 45px !important;
+    min-width: 45px;
+}
+
+.column-set div, .column-set-titles div, .column-set-no-sort div {
+    padding: 0;
+    margin: 0;
+    width: 35px;
+    height: 25px;
+    display: inline-block;
+}
+
+.ranking {
+    color: #CCCCCC;
+    font-size: 12px;
+    font-weight: bold;
+    width: 35px;
+}
+
+</style>
+	<apex:attribute name="groupId" type="String" required="true" description="Id of Group being diplayed" assignTo="{!myGroupId}"/>
+
+			<li class="dark actionable forceListRecord forceRecordLayout">
+				<div class="itemTitle">
+					<span class="uiOutputText">
+					Group {!groupName}
+					</span>
+				</div>
+				<div class="itemRows truncate">
+					<div class="classification-wrapper">
+					    <apex:dataTable value="{!teams}" var="team" styleclass="static" columnClasses="ranking, shortname, points" rowClasses="team-row">
+					    	<apex:column >
+					    		<apex:outputText value="{!team.ranking}" />
+					   		</apex:column>
+					    	<apex:column >
+					    		<apex:outputText value="{!team.name}" />
+					   		</apex:column>
+					    	<apex:column >
+						    	<apex:facet name="header">P</apex:facet>
+					    		<apex:outputText value="{!team.points}" />
+					   		</apex:column>
+					    </apex:dataTable>
+					 
+					    <div class="classification-shadow end left">
+					
+					    </div>
+					    <div class="classification-shadow right">
+					
+					    </div>
+					    <div class="classification-container ribbon-active" style="overflow: auto;">
+						    <div class="holder" style="width: 290px; overflow: hidden; position: relative; -webkit-user-select: none; -webkit-transform: translate(0px, 0px); -webkit-transition: all 0.3s ease-out; transition: all 0.3s ease-out; height: 200px;">
+							    <apex:dataTable value="{!teams}"  var="team" styleClass="dynamic page-1">
+							    	<apex:column >
+								    	<apex:facet name="header">G</apex:facet>
+							    		<apex:outputText value="{!team.wins+team.ties+team.losses}" />
+							   		</apex:column>
+							    	<apex:column >
+								    	<apex:facet name="header">W</apex:facet>
+							    		<apex:outputText value="{!team.wins}" />
+							   		</apex:column>
+							    	<apex:column >
+								    	<apex:facet name="header">T</apex:facet>
+							    		<apex:outputText value="{!team.ties}" />
+							   		</apex:column>
+							    	<apex:column >
+								    	<apex:facet name="header">L</apex:facet>
+							    		<apex:outputText value="{!team.losses}" />
+							   		</apex:column>
+							    	<apex:column >
+								    	<apex:facet name="header">GF</apex:facet>
+							    		<apex:outputText value="{!team.goals_favor}" />
+							   		</apex:column>
+							    	<apex:column >
+								    	<apex:facet name="header">GA</apex:facet>
+							    		<apex:outputText value="{!team.goals_against}" />
+							   		</apex:column>
+							    	<apex:column >
+								    	<apex:facet name="header">GD</apex:facet>
+							    		<apex:outputText value="{!team.goals_favor-team.goals_against}" />
+						   		</apex:column>
+						   		</apex:dataTable>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+</apex:component>

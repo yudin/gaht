@@ -1,0 +1,22 @@
+<apex:component >
+	<apex:attribute name="gameTitle" type="String" required="true" description="Description of game, eg. 'Next Game' "/>
+	<apex:attribute name="gameId" type="String" required="true" description="Id of game. This id will be used to navigate to the game detail page"/>
+	<apex:attribute name="homeTeam" type="String" required="true" description="Name of Home Team"/>
+	<apex:attribute name="awayTeam" type="String" required="true" description="Name of Away Team"/>
+
+			<li class="dark actionable forceListRecord forceRecordLayout">
+		    <a href="javascript:sforce.one.navigateToSObject('{!gameId}')" class="gaht">
+				<div class="itemTitle">
+					<span class="uiOutputText">
+					{!gameTitle}
+					</span>
+				</div>
+				<div class="itemRows truncate">
+					<span>{!homeTeam}</span>
+					X
+					<span>{!awayTeam}</span>
+				</div>
+			</a>
+			</li>
+
+</apex:component>

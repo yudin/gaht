@@ -1,0 +1,93 @@
+<apex:page controller="GameCastController">
+<c:s1style />
+<apex:stylesheet value="{!$Resource.flipclockcss}"/>
+<apex:includeScript value="https://code.jquery.com/jquery-1.11.1.min.js"/>
+<apex:includeScript value="{!URLFOR($Resource.flipclock, 'flipclock.js')}"/>
+<apex:includeScript value="{!$Resource.modaljs}"/>
+<script>
+var clock;
+
+(function($){
+	$(function() {
+	clock  = $('.flip-counter').FlipClock({
+		autoStart: false,
+		countdown: true,
+		clockFace: 'MinuteCounter'
+	});
+	clock.setTime(20*60);
+	});
+})(jQuery);
+
+function stopClock() {
+	clock.stop();
+}
+function startClock() {
+	clock.start();
+}
+
+</script>	
+<div class="bootstrap-sf1">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-10">
+<div>{!homeTeam}</div>
+			</div>
+			<div class="col-xs-2">
+			<apex:outputPanel id="homeTeamScore">
+<!-- Button trigger modal -->
+<button class="btn btn-primary " data-toggle="modal" data-target="#myModal">
+  {!homeTeamScore}
+</button>
+			</apex:outputPanel>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10">
+<div>{!awayTeam}</div>
+			</div>
+			<div class="col-xs-2">
+<button class="btn btn-primary " data-toggle="modal" data-target="#myModal">
+  {!awayTeamScore}
+</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+		<div class="flip-counter"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+		<button type="button" class="btn btn-primary btn-lg btn-block" onClick="startClock();">Start game!</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+		<button type="button" class="btn btn-primary btn-lg btn-block" onClick="stopClock();">Pause game!</button>
+			</div>
+		</div>
+	</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onClick="homeTeamScores();">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>	
+</div>
+<apex:form >
+	<apex:actionFunction name="homeTeamScores" action="{!homeTeamScores}" rerender="homeTeamScore"/>
+</apex:form> 
+</apex:page>

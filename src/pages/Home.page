@@ -1,0 +1,10 @@
+<apex:page controller="HomeController" sidebar="false" showheader="false" >
+<c:s1style />
+	<div class="bootstrap-sf1" >
+		<ul class="forceRelatedList">
+			<c:GameCard2 gameTitle="Next Game" gameId="a06o0000000p6fA" homeTeam="{!nextGameHomeTeam}" awayTeam="{!nextGameAwayTeam}"/>
+			<c:GameCard2 gameTitle="Previous Game" gameId="a06o0000000p6fA" homeTeam="{!previousGameHomeTeam}" awayTeam="{!previousGameAwayTeam}"/>
+			<c:GroupStandings groupId="{!myGroupId}" />
+		</ul>
+	</div>
+</apex:page>
