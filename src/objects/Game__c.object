@@ -233,6 +233,11 @@
         <unique>false</unique>
     </fields>
     <label>Game</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Game Name</label>
         <type>Text</type>

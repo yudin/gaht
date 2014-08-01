@@ -121,6 +121,26 @@
         <field>Team__c.Color__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Tournament_Edition__c.Active__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Tournament_Edition__c.Current_Stage__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Tournament_Group__c.Tournament_Stage__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Tournament_Stage__c.Style__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
     <label>Tournament Referee</label>
     <objectPermissions>
         <allowCreate>false</allowCreate>

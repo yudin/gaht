@@ -1,4 +1,4 @@
-<apex:page controller="HomeController" sidebar="false" showheader="false" >
+<apex:page controller="HomeController"  >
 <c:s1style />
 	<div class="bootstrap-sf1" >
 		<ul class="forceRelatedList">

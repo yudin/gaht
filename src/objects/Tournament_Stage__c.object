@@ -54,36 +54,42 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>Style__c</fullName>
+        <externalId>false</externalId>
+        <label>Style</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Round-robin</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Knock-out</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>Tournament_Edition__c</fullName>
         <externalId>false</externalId>
         <label>Tournament Edition</label>
         <referenceTo>Tournament_Edition__c</referenceTo>
-        <relationshipLabel>Tournament Groups</relationshipLabel>
-        <relationshipName>Tournament_Groups</relationshipName>
+        <relationshipLabel>Tournament Stages</relationshipLabel>
+        <relationshipName>Tournament_Stages</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
-    <fields>
-        <fullName>Tournament_Stage__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Tournament Stage</label>
-        <referenceTo>Tournament_Stage__c</referenceTo>
-        <relationshipLabel>Tournament Groups</relationshipLabel>
-        <relationshipName>Tournament_Groups</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <label>Tournament Group</label>
+    <label>Tournament Stage</label>
     <nameField>
-        <label>Group</label>
+        <label>Tournament Stage Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Tournament Groups</pluralLabel>
+    <pluralLabel>Tournament Stages</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

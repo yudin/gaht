@@ -15,6 +15,10 @@
                 <behavior>Required</behavior>
                 <field>Tournament_Edition__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Tournament_Stage__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
@@ -50,6 +54,7 @@
     </layoutSections>
     <relatedLists>
         <fields>Team_Name__c</fields>
+        <fields>Team__c</fields>
         <relatedList>Group_Membership__c.Group__c</relatedList>
     </relatedLists>
     <relatedLists>

@@ -1,7 +1,7 @@
 public with sharing class HomeController {
 	private Game__c nextGame, previousGame;
 	public HomeController() {
-		String currentEdition = '2014';
+		Tournament_Edition__c currentEdition = GameUtil.getActiveEdition();
 		if(GameUtil.isUserPlaying()){
 			nextGame = GameUtil.getNextGameAsPlayer(UserInfo.getUserId(), currentEdition);
 			previousGame = GameUtil.getPreviousGameAsPlayer(UserInfo.getUserId(), currentEdition);
